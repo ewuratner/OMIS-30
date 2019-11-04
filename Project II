@@ -13,7 +13,6 @@ while True:
     high_bet_amount = 0
     single_bet_amount = 0
     single_bet_number = 38
-    user_account = user_account
     roulette_table = ("""
                                  Roulette Table
        ______________________________________________________________________
@@ -36,7 +35,6 @@ while True:
         6: "High Bets",
         7: "Single Number Bets",
         8: "Spin Roulette",
-        9: "Break"
     }
     print(bets)
 
@@ -45,9 +43,9 @@ while True:
         user_bet = input("Please enter your type of bet: ")
         if not user_bet:
             print("invalid input")
-        elif user_bet.isdigit() == False:
+        elif not user_bet.isdigit():
             print("invalid input ")
-        elif int(user_bet) < 1 or int(user_bet) > 9:
+        elif int(user_bet) < 1 or int(user_bet) > 8:
             print("invalid input ")
         elif int(user_bet) == 1:
             even_bet_amount = int(input("Please enter the amount to bet on even: "))
@@ -77,7 +75,8 @@ while True:
             single_bet_number = int(input("What number do u want to bet on "))
             single_bet_amount = int(input("Please enter the amount to bet on {}: ".format(single_bet_number)))
             user_account = user_account - single_bet_amount
-            print("You have ${} left after putting ${} on {}".format(user_account, single_bet_amount, single_bet_number))
+            print(
+                "You have ${} left after putting ${} on {}".format(user_account, single_bet_amount, single_bet_number))
         elif int(user_bet) == 8:
             break
 
@@ -103,7 +102,10 @@ while True:
             print("{} Black".format(random_output))
 
 
-    def bet_result(random_output, user_account):
+    def bet_result(random_output):
+
+        global user_account
+
         # Even/Odd Bet
         if even_bet_amount == 0 and odd_bet_amount == 0:
             return ""
@@ -150,5 +152,4 @@ while True:
             user_account = user_account - single_bet_amount
             return "Sorry it wasn't {}. Your new account balance is ${}".format(single_bet_number, user_account)
 
-
-    print(bet_result(random_output, user_account))
+    print(bet_result(random_output))
