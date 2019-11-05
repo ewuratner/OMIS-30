@@ -38,6 +38,8 @@ def odd(random_output):
     elif random_output % 2 != 0:
         user_account = user_account + (odd_bet_amount * 2)
         return "It was odd! Your new account balance is ${}".format(user_account)
+    else:
+        return ""
 
 
 # red function calculation
@@ -48,6 +50,8 @@ def red(random_output):
     elif roulette_color == "Red":
         user_account = user_account + (red_bet_amount * 2)
         return "It was red! Your new account balance is ${}".format(user_account)
+    else:
+        return ""
 
 
 # black function calculation
@@ -58,6 +62,8 @@ def black(random_output):
     elif roulette_color == "Black":
         user_account = user_account + (black_bet_amount * 2)
         return "It was black! Your new account balance is ${}".format(user_account)
+    else:
+        return ""
 
 
 # low function calculation
@@ -120,6 +126,11 @@ while True:
        | R1 | B4 | R7 | B10 | B13 | R16 | R19 | B22 | R25 | B28 | B31 | R34 | |
        |______________________________________________________________________|
        |  1 to 18   |   Even   |   Black   |   Red   |   Odd   |   19 to 36   |
+       
+       Rules: Only one number for single bets and you cannot add more money to 
+       a bet. If you change your bet, only the last bet amount will process and 
+       the money spent on any previous bets will be subtracted from your account 
+       and not refunded.
     """)
     print(roulette_table)
 
@@ -149,13 +160,14 @@ while True:
         while True:
             print("You currently have ${} in your account".format(user_account))
             user_bet = input("Please enter your type of bet: ")
+
             if not user_bet:
                 print("Invalid input")
             elif user_bet.isdigit() == False:
                 print("Invalid input ")
             elif int(user_bet) < 1 or int(user_bet) > 8:
                 print("Please choose valid bet")
-            if int(user_bet) == 1:
+            elif int(user_bet) == 1:
                 even_bet_amount = input("Please enter the amount to bet on even: ")
                 validation = user_validation(even_bet_amount)
                 even_bet_amount = int(validation)
