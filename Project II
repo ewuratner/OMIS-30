@@ -1,3 +1,10 @@
+# Roulette Code by Lawrence Chung and Elena Wu-Ratner
+
+"""
+Unlike true roulette that allows you to bet on the 3 rows, 3 different sections, 4 numbers via corner bet and
+2 numbers via side(?) bets, we only included the even/odd, red/back, high/low and single number bets for this project.
+"""
+
 # import libraries
 import random
 
@@ -100,8 +107,7 @@ def single_number(random_output):
         user_account = user_account + single_bet_amount * 35
         return "Congratulations it was {}! Your new account balance is ${}".format(random_output, user_account)
     elif int(random_output) != single_bet_number:
-        return  ""
-        #return "Sorry it wasn't {}. Your new account balance is ${}".format(single_bet_number, user_account)
+        return ""
 
 
 while True:
@@ -127,10 +133,12 @@ while True:
        |______________________________________________________________________|
        |  1 to 18   |   Even   |   Black   |   Red   |   Odd   |   19 to 36   |
        
-       Rules: Only one number for single bets and you cannot add more money to 
-       a bet. If you change your bet, only the last bet amount will process and 
-       the money spent on any previous bets will be subtracted from your account 
-       and not refunded.
+      Notes: 37 replaces 00 on the table, please plan bets accordingly
+       
+      Rules: Only one number for single bets and you cannot add more money to 
+      a bet. If you change your bet, only the last bet amount will process and 
+      the money spent on any previous bets will be subtracted from your account 
+      and not refunded.
     """)
     print(roulette_table)
 
@@ -148,9 +156,8 @@ while True:
     }
     print(bets)
 
-    # print("You currently have ${} in your account".format(user_account))
     user_bet = input("Input anything to play. Write 'Stop' to leave the table. ")
-
+    # option for user to quit out of game
     if user_bet.title() == "Stop":
         print("Leaving table")
         break
@@ -192,13 +199,13 @@ while True:
                 user_account = user_account - black_bet_amount
                 print("You have ${} left after putting ${} on black".format(user_account, black_bet_amount))
             elif int(user_bet) == 5:
-                low_bet_amount = input("Please enter the amount to bet on low: ")
+                low_bet_amount = input("Please enter the amount to bet on low (1-18): ")
                 validation = user_validation(low_bet_amount)
                 low_bet_amount = int(validation)
                 user_account = user_account - low_bet_amount
                 print("You have ${} left after putting ${} on low".format(user_account, low_bet_amount))
             elif int(user_bet) == 6:
-                high_bet_amount = input("Please enter the amount to bet on high: ")
+                high_bet_amount = input("Please enter the amount to bet on high (19-36): ")
                 validation = user_validation(high_bet_amount)
                 high_bet_amount = int(validation)
                 user_account = user_account - high_bet_amount
