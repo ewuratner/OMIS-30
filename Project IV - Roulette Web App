@@ -1,0 +1,364 @@
+# Roulette Web App made by Lawrence Chung and Elena Wu-Ratner
+
+# HTML For Roulette
+# Home page HTML
+homeHTML = """<center></p> <!-- Game Homepage--> <p><br />Choose Game</p> <!-- OMIS30 HTML Template--> <p>&nbsp;</p> 
+<p><img src="https://bfgblog-a.akamaihd.net/uploads/2013/11/6-4-European-Roulette.png" alt="" width="50" height="50" />
+</p> <p><a href="/roulette_home">Roulette</a></p> <p>&nbsp;</p> <p></center>""".strip()
+
+# Roulette home page HTML
+roulette_homeHTML = """<center></p>
+<!-- Roulette Home-->
+<br><br><br>
+<p><span style="color: #ffffff;">&nbsp;Join Table?</span></p>
+<style>
+body {
+  background-image: url('http://adultcasinosgames.com/games/uploads/2017/05/Roulette-1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+<center>
+<p><span style="color: #ffffff;"><a style="color: #ffffff;" href="/bets">Join</a></span></p>
+<p><span style="color: #ffffff;"><a style="color: #ffffff;" href="/">Back to Home</a></span></p></center>
+<!-- Bet Page-->
+<p></center>""".strip()
+
+# Placing bets page HTML
+selecting_bets = """<center></p>
+<p>&nbsp;<img src="http://www.alwaysfuncasinos.com/images/RouletteLayout.PNG" alt="" width="463" height="234" /></p>
+<p>Current Account Balance: ${} <br />
+<form action="/confirmation">
+<p>Even Bet Amount:</p>
+<input max="user_account" min="0" name="even_bet_amount" type="number" value="0" />
+<p>Odd Bet Amount:</p>
+<input max="user_account" min="0" name="odd_bet_amount" type="number" value="0" />
+<p>Red Bet Amount:</p>
+<input max="user_account" min="0" name="red_bet_amount" type="number" value="0" />
+<p>Black Bet Amount:</p>
+<input max="user_account" min="0" name="black_bet_amount" type="number" value="0" />
+<p>Low Bet Amount:</p>
+<input max="user_account" min="0" name="low_bet_amount" type="number" value="0" />
+<p>High Bet Amount:</p>
+<input max="user_account" min="0" name="high_bet_amount" type="number" value="0" />
+<p><label> Single Bet Number (37 is 00)<br /><br /></label><select name="single_bet_number">
+<option value="38">No Bet</option>
+<option value="37">37</option>
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+</select></p>
+<p>Single Bet Amount:</p>
+<input max="user_account" min="0" name="single_bet_amount" type="number" value="0" /> <br /> 
+<br /> <input type="submit" value="Submit Bets" />
+<pre>&nbsp;</pre>
+</form>
+<p></center>""".strip()
+
+# Bet confirmation page HTML
+bet_calculation = """<center></p>
+<p>You have bet:</p>
+<table>
+<tbody>
+<tr>
+<td>Even Bet Amount:</td>
+<td>${even_field}</td>
+</tr>
+<tr>
+<td>Odd Bet Amount:</td>
+<td>${odd_field}</td>
+</tr>
+<tr>
+<td>Red Bet Amount:</td>
+<td>${red_field}</td>
+</tr>
+<tr>
+<td>Black Bet Amount:</td>
+<td>${black_field}</td>
+</tr>
+<tr>
+<td>Low Bet Amount:</td>
+<td>${low_field}</td>
+</tr>
+<tr>
+<td>High Bet Amount:</td>
+<td>${high_field}</td>
+</tr>
+<tr>
+<td>Single Bet Number:</td>
+<td>{single_number_field}</td>
+</tr>
+<tr>
+<td>Single Bet Amount:</td>
+<td>${single_bet_field}</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>Final User Account:</td>
+<td>${user_field}</td>
+</tr>
+</tbody>
+</table>
+<p><a href="/bets">Change Bets</a></p>
+<p><a href="/spinning">Spin Wheel</a></p>
+<p></center>""".strip()
+
+# Roulette spin page HTML
+spinning_page = """<center><head> <meta http-equiv="Refresh" content="8.5;url=/results"> </head> <p> <img 
+src="https://i.pinimg.com/originals/30/16/25/30162543258ca8058fe7bc4003be2a33.gif" alt="" width="600" height="374" 
+/></p>
+ <p><a href="/results">Skip</a></p>
+ <p></center>""".strip()
+
+# Results page HTML
+html_results = """<center></p>
+<p>The Ball Landed On...&nbsp;<br /> {}{}! {}</p>
+<p>Your new account balance is: ${}<br /><br /> <a href="/bets">Play Again</a></p>
+<p><a href="/">Back to Home</a></center>""".strip()
+
+# Roulette App Code
+from flask import Flask, request
+import random
+
+# setting bet amounts originally to provide reference for globals
+user_account = 1000
+even_bet_amount = 0
+odd_bet_amount = 0
+black_bet_amount = 0
+red_bet_amount = 0
+low_bet_amount = 0
+high_bet_amount = 0
+single_bet_amount = 0
+single_bet_number = 38
+
+app = Flask(__name__)
+
+
+# homepage
+@app.route('/')
+def homepage():
+    return homeHTML
+
+
+# join roulette table
+@app.route('/roulette_home')
+def roulette_home():
+    global user_account
+    user_account = 1000
+    return roulette_homeHTML
+
+
+# bet making page
+@app.route('/bets')
+def make_bets():
+    # global-ing to allow for re-dos of bets
+    global user_account
+    global even_bet_amount
+    global odd_bet_amount
+    global red_bet_amount
+    global black_bet_amount
+    global low_bet_amount
+    global high_bet_amount
+    global single_bet_amount
+
+    # if user comes back to this page from confirmation page, this brings back the original account balance
+    user_account = (user_account + even_bet_amount + odd_bet_amount + red_bet_amount + black_bet_amount +
+                    high_bet_amount + low_bet_amount + single_bet_amount)
+    return selecting_bets.format(user_account)
+
+
+# showing users what they bet on
+@app.route('/confirmation')
+def confirm_bets():
+    # global-ing to allow for multiple playthroughs
+    global user_account
+    global even_bet_amount
+    global odd_bet_amount
+    global red_bet_amount
+    global black_bet_amount
+    global low_bet_amount
+    global high_bet_amount
+    global single_bet_amount
+    global single_bet_number
+
+    # Getting data from previous form and assigning it to variables
+    if request.args.get('even_bet_amount') == '':
+        even_bet_amount = 0
+    else:
+        even_bet_amount = int(request.args.get('even_bet_amount'))
+    if request.args.get('odd_bet_amount') == '':
+        odd_bet_amount = 0
+    else:
+        odd_bet_amount = int(request.args.get('odd_bet_amount'))
+    if request.args.get('red_bet_amount') == '':
+        red_bet_amount = 0
+    else:
+        red_bet_amount = int(request.args.get('red_bet_amount'))
+    if request.args.get('black_bet_amount') == '':
+        black_bet_amount = 0
+    else:
+        black_bet_amount = int(request.args.get('black_bet_amount'))
+    if request.args.get('low_bet_amount') == '':
+        low_bet_amount = 0
+    else:
+        low_bet_amount = int(request.args.get('low_bet_amount'))
+    if request.args.get('high_bet_amount') == '':
+        high_bet_amount = 0
+    else:
+        high_bet_amount = int(request.args.get('high_bet_amount'))
+    if request.args.get('single_bet_amount') == '':
+        single_bet_amount = 0
+    else:
+        single_bet_amount = int(request.args.get('single_bet_amount'))
+
+    single_bet_number = int(request.args.get('single_bet_number'))
+
+    # for formatting on confirmation page to write "No Bet" rather than "None"
+    if single_bet_number == 38:
+        single_bet_number = "No Bet"
+
+    # Bet validation - checks that user's bet does not exceed their account
+    if even_bet_amount > user_account:
+        even_bet_amount = user_account
+    if odd_bet_amount > (user_account - even_bet_amount):
+        odd_bet_amount = user_account - even_bet_amount
+    if red_bet_amount > (user_account - even_bet_amount - odd_bet_amount):
+        red_bet_amount = user_account - even_bet_amount - odd_bet_amount
+    if black_bet_amount > (user_account - even_bet_amount - odd_bet_amount - red_bet_amount):
+        black_bet_amount = user_account - even_bet_amount - odd_bet_amount - red_bet_amount
+    if low_bet_amount > (user_account - even_bet_amount - odd_bet_amount - red_bet_amount - black_bet_amount):
+        low_bet_amount = user_account - even_bet_amount - odd_bet_amount - red_bet_amount - black_bet_amount
+    if high_bet_amount > (user_account - even_bet_amount - odd_bet_amount - red_bet_amount - black_bet_amount -
+                          low_bet_amount):
+        high_bet_amount = user_account - even_bet_amount - odd_bet_amount - red_bet_amount - black_bet_amount - \
+                          low_bet_amount
+    if single_bet_amount > (user_account - even_bet_amount - odd_bet_amount - red_bet_amount - black_bet_amount -
+                            low_bet_amount - high_bet_amount):
+        single_bet_amount = user_account - even_bet_amount - odd_bet_amount - red_bet_amount - black_bet_amount - \
+                            low_bet_amount - high_bet_amount
+    # Calculating new user account after all bets
+    user_account = (user_account - even_bet_amount - odd_bet_amount - red_bet_amount - black_bet_amount -
+                    low_bet_amount - high_bet_amount - single_bet_amount)
+
+    return bet_calculation.format(even_field=even_bet_amount, odd_field=odd_bet_amount, red_field=red_bet_amount,
+                                  black_field=black_bet_amount, low_field=low_bet_amount, high_field=high_bet_amount,
+                                  single_number_field=single_bet_number, single_bet_field=single_bet_amount,
+                                  user_field=user_account)
+
+
+@app.route('/spinning')
+def wheel_spin():
+    return spinning_page
+
+
+@app.route('/results')
+def results():
+    # gives a random output between 0-37, where 37 = 00
+    random_output = random.randint(0, 37)
+
+    # determines whether the output is red or black
+    roulette_color = ""
+    if random_output in range(1, 11) or random_output in range(19, 29):
+        if random_output % 2 == 0:
+            roulette_color = " Black"
+        else:
+            roulette_color = " Red"
+    elif random_output in range(11, 19) or random_output in range(29, 37):
+        if random_output % 2 == 0:
+            roulette_color = " Red"
+        else:
+            roulette_color = " Black"
+
+    # determine roulette range
+    roulette_range = ""
+    if random_output in range(1, 19):
+        roulette_range = "It is Low"
+    elif random_output in range(19, 37):
+        roulette_range = "It is High"
+
+    # global-ing again...
+    global user_account
+    global even_bet_amount
+    global odd_bet_amount
+    global red_bet_amount
+    global black_bet_amount
+    global low_bet_amount
+    global high_bet_amount
+    global single_bet_amount
+    global single_bet_number
+
+    # Adding bet amount if the roulette was correct
+    if random_output % 2 == 0 and random_output != 0:
+        user_account = user_account + (even_bet_amount * 2)
+    elif random_output % 2 != 0 and random_output != 0:
+        user_account = user_account + (odd_bet_amount * 2)
+    if roulette_color == " Red":
+        user_account = user_account + (red_bet_amount * 2)
+    else:
+        user_account = user_account + (black_bet_amount * 2)
+    if roulette_range == "It is Low":
+        user_account = user_account + (low_bet_amount * 2)
+    else:
+        user_account = user_account + (high_bet_amount * 2)
+    if random_output == single_bet_number:
+        user_account = user_account + (single_bet_amount * 36)
+
+    # resetting bet amounts for next round so users can safely change their bets at confirmation page if desired
+    even_bet_amount = 0
+    odd_bet_amount = 0
+    black_bet_amount = 0
+    red_bet_amount = 0
+    low_bet_amount = 0
+    high_bet_amount = 0
+    single_bet_amount = 0
+
+    return html_results.format(random_output, roulette_color, roulette_range, user_account)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
